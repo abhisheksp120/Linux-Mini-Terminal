@@ -641,6 +641,12 @@ int main(void)
 	}
 	check_status();//checks the status of all background processes
     }//exit while loop
-    
+    for(i=0;i<parrptr;i++)//kill all running proccesses
+    {
+	if(parr[i].stat)//if process is still running
+	{
+	    kill(parr[i].pid,SIGKILL);//send kill signal
+	}
+    }
     return 0;
 }
